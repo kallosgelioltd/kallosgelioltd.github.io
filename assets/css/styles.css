@@ -1518,7 +1518,8 @@ a:focus {
     }
 
     .playlist-frame {
-        padding-top: 72%;
+        padding-top: 0;
+        height: min(70vh, 540px);
     }
 
     .gallery-stack-cards {
