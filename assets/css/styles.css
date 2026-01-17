@@ -1275,7 +1275,7 @@ a:focus {
 .gallery-stack-cards {
     position: relative;
     width: min(100%, 760px);
-    min-height: 520px;
+    min-height: min(75vh, 560px);
     cursor: pointer;
 }
 
@@ -1518,7 +1518,7 @@ a:focus {
     }
 
     .gallery-stack-cards {
-        min-height: 420px;
+        min-height: min(80vh, 520px);
     }
 
     .timeline-track {
@@ -1566,6 +1566,6 @@ a:focus {
     }
 
     .gallery-stack-cards {
-        min-height: 360px;
+        min-height: min(90vh, 500px);
     }
 }
