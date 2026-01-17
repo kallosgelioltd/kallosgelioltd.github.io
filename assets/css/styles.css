@@ -151,16 +151,23 @@ a:focus {
 }
 
 .hero {
-    background: radial-gradient(circle at top left, rgba(31, 61, 237, 0.6), transparent 45%),
-        linear-gradient(135deg, rgba(18, 17, 74, 0.96), rgba(23, 61, 237, 0.85));
+    position: relative;
     color: #ffffff;
+    background-image: linear-gradient(90deg, rgba(5, 6, 30, 0.92) 15%, rgba(12, 14, 40, 0.78) 55%, rgba(20, 26, 70, 0.45) 80%),
+        url("https://images.pexels.com/photos/19041795/pexels-photo-19041795.jpeg?auto=compress&cs=tinysrgb&w=1600&q=80");
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+    overflow: hidden;
 }
 
 .hero-content {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 3rem;
+    grid-template-columns: minmax(0, 620px);
+    gap: 2.5rem;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-kicker {
@@ -168,14 +175,19 @@ a:focus {
     letter-spacing: 0.2em;
     font-size: 0.75rem;
     text-transform: uppercase;
-    opacity: 0.7;
+    opacity: 0.8;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .hero h1 {
     margin: 0.8rem 0;
     font-family: "Cinzel", serif;
     font-size: clamp(2rem, 2.3rem + 1vw, 3.4rem);
-    line-height: 1.1;
+    line-height: 1.15;
+    text-transform: uppercase;
 }
 
 .hero p {
