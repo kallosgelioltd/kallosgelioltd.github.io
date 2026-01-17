@@ -1517,6 +1517,10 @@ a:focus {
         padding: 1.6rem;
     }
 
+    .playlist-frame {
+        padding-top: 72%;
+    }
+
     .gallery-stack-cards {
         min-height: min(80vh, 520px);
     }
