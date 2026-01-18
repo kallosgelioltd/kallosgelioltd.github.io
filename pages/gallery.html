@@ -38,13 +38,13 @@
                     <li><a href="../index.html#contact">Contact</a></li>
                 </ul>
             </nav>
-            <a class="cta-button" href="https://wa.me/233240416297" target="_blank" rel="noopener">Start Your
+            <a class="cta-button" href="https://wa.me/233557625071" target="_blank" rel="noopener">Start Your
                 Project</a>
         </div>
     </header>
 
     <main>
-        <section class="page-section gallery-showcase">
+        <section class="page-section gallery-showcase reveal-on-scroll is-visible">
             <div class="container section-inner">
                 <div class="section-heading">
                     <p class="section-eyebrow">Watch the process</p>
@@ -80,7 +80,7 @@
             </div>
         </section>
 
-        <section class="page-section gallery-collection">
+        <section class="page-section gallery-collection reveal-on-scroll">
             <div class="container section-inner">
                 <div class="section-heading">
                     <p class="section-eyebrow">See the craft</p>
@@ -362,14 +362,14 @@
                     </div>
                 </div>
                 <div class="page-cta">
-                    <a class="button primary" href="https://wa.me/233240416297" target="_blank" rel="noopener">Book a
+                    <a class="button primary" href="https://wa.me/233557625071" target="_blank" rel="noopener">Book a
                         site visit</a>
                     <a class="button secondary" href="mailto:kallosgelioltd@gmail.com">Share your brief</a>
                 </div>
             </div>
         </section>
 
-        <section class="page-hero gallery-hero">
+        <section class="page-hero gallery-hero reveal-on-scroll">
             <div class="container hero-layout">
                 <div class="hero-copy">
                     <span class="hero-kicker">Field Evidence</span>
@@ -386,7 +386,7 @@
                         <a class="button primary"
                             href="https://www.youtube.com/playlist?list=PLmB7X_kZWPfZex_aXi7HK67GrSHsoPM-7"
                             target="_blank" rel="noopener">Open Playlist</a>
-                        <a class="button secondary" href="https://wa.me/233240416297" target="_blank"
+                        <a class="button secondary" href="https://wa.me/233557625071" target="_blank"
                             rel="noopener">Request Site Walkthrough</a>
                     </div>
                 </div>
@@ -465,6 +465,42 @@
                 activateHeroSlide(nextIndex);
             }, 7000);
         }
+
+        const initRevealAnimations = () => {
+            const revealTargets = document.querySelectorAll('.reveal-on-scroll');
+            if (!revealTargets.length) {
+                return;
+            }
+
+            document.body.classList.add('reveal-ready');
+
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+            if (prefersReducedMotion.matches) {
+                revealTargets.forEach((target) => target.classList.add('is-visible'));
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '0px 0px -10% 0px'
+            });
+
+            revealTargets.forEach((target) => {
+                if (target.classList.contains('is-visible')) {
+                    return;
+                }
+                observer.observe(target);
+            });
+        };
+
+        initRevealAnimations();
 
         const galleryStacks = document.querySelectorAll('[data-gallery-stack]');
         galleryStacks.forEach((galleryStack) => {

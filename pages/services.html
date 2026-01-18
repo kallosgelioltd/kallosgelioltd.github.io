@@ -38,13 +38,13 @@
                     <li><a href="../index.html#contact">Contact</a></li>
                 </ul>
             </nav>
-            <a class="cta-button" href="https://wa.me/233240416297" target="_blank" rel="noopener">Start Your
+            <a class="cta-button" href="https://wa.me/233557625071" target="_blank" rel="noopener">Start Your
                 Project</a>
         </div>
     </header>
 
     <main>
-        <section class="page-hero">
+        <section class="page-hero reveal-on-scroll is-visible">
             <div class="container section-inner">
                 <div>
                     <span class="hero-kicker">Capabilities</span>
@@ -54,13 +54,13 @@
                         for predictable outcomes across Ghana.</p>
                     <div class="hero-actions">
                         <a class="button primary" href="partner.html">Partner With Us</a>
-                        <a class="button secondary" href="tel:+233240416297">Call +233 24 041 6297</a>
+                        <a class="button secondary" href="tel:+233557625071">Call +233 55 762 5071</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="page-section">
+        <section class="page-section reveal-on-scroll">
             <div class="container section-inner">
                 <div class="section-heading">
                     <p class="section-eyebrow">Project Types</p>
@@ -113,7 +113,7 @@
             </div>
         </section>
 
-        <section class="page-section">
+        <section class="page-section reveal-on-scroll">
             <div class="container section-inner">
                 <div class="section-heading">
                     <p class="section-eyebrow">How we work</p>
@@ -215,6 +215,42 @@
                 activateHeroSlide(nextIndex);
             }, 7000);
         }
+
+        const initRevealAnimations = () => {
+            const revealTargets = document.querySelectorAll('.reveal-on-scroll');
+            if (!revealTargets.length) {
+                return;
+            }
+
+            document.body.classList.add('reveal-ready');
+
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+            if (prefersReducedMotion.matches) {
+                revealTargets.forEach((target) => target.classList.add('is-visible'));
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '0px 0px -10% 0px'
+            });
+
+            revealTargets.forEach((target) => {
+                if (target.classList.contains('is-visible')) {
+                    return;
+                }
+                observer.observe(target);
+            });
+        };
+
+        initRevealAnimations();
 
         const yearTarget = document.getElementById('year');
         if (yearTarget) {
