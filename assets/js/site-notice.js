@@ -1,6 +1,6 @@
 (() => {
   const noticeConfig = {
-    enabled: true,
+    enabled: false,
     message: `This website is currently under development and review.
 Final deployment is pending completion of closure procedures.
 Some features may be incomplete or restricted.
